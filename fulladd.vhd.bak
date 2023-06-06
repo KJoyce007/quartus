@@ -1,0 +1,24 @@
+library ieee;
+use ieee.std_logic_1164.all;
+library work;
+use work.Gates.all;
+entity fulladd is
+  port(A,B,C: in std_logic; S,Cout: out std_logic);
+end entity fulladd;
+architecture Dem of fulladd is
+  signal t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11:std_logic;
+begin 
+  n1:NAND_2 port map (A =>A , B=>B , Y=> t1);
+  n2:NAND_2 port map (A =>A , B=>t1 , Y=> t3);
+  n3:NAND_2 port map (A =>t1 , B=>B , Y=> t2);
+  n4:NAND_2 port map (A =>t3 , B=>t2 , Y=> t4);
+  n5:NAND_2 port map (A =>t1 , B=>t1 , Y=> t9);
+  n6:NAND_2 port map (A =>t4 , B=>C , Y=> t5);
+  n7:NAND_2 port map (A =>t4 , B=>t5 , Y=> t6);
+  n8:NAND_2 port map (A =>t5 , B=>C , Y=> t7);
+  n9:NAND_2 port map (A =>t6 , B=>t7 , Y=> S);
+  n10:NAND_2 port map (A =>t5 , B=>t5 , Y=> t8);
+  n11:NAND_2 port map (A =>t8 , B=>t8 , Y=> t10);
+  n12:NAND_2 port map (A =>t9 , B=>t9 , Y=> t11);
+  n13:NAND_2 port map (A =>t10 , B=>t11 , Y=>Cout);
+end Dem; 
